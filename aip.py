@@ -108,13 +108,13 @@ def label_choice(choice):
 df['choice'] = df['choice'].apply(label_choice)
 
 
-# Group the DataFrame by the 'choices' column and calculate the sum of the 'vp' column for each group
-df_grouped = df.groupby('choices')['vp'].sum().reset_index()
+# Group the DataFrame by the 'choice' column and calculate the sum of the 'vp' column for each group
+df_grouped = df.groupby('choice')['vp'].sum().reset_index()
 
 # Create the pie chart
 chart = alt.Chart(df_grouped).mark_circle().encode(
     alt.Size('vp', scale=alt.Scale(range=[0, 1000])),
-    alt.Color('choices', scale=alt.Scale(range=['#0A2A6E', '#FFCE44']))
+    alt.Color('choice', scale=alt.Scale(range=['#0A2A6E', '#FFCE44']))
 )
 
 chart = chart.properties(height=500)
