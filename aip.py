@@ -16,7 +16,7 @@ c1, c2 = st.columns([1, 3])
 c2.header("ApeCoin DAO – Special Council Nominees - Term Beginning January 2023")
 c2.caption(
     """
-    A deep dive on Royalty Data from Ethereum Network. Powered by [Flipside Crypto](https://flipsidecrypto.xyz/)
+    ApeCoin DAO voting results, sorted by newest to oldest. working on fixing choices column.
     
     Twitter: [@1kbeetlejuice](https://twitter.com/1kbeetlejuice) 
     """
@@ -92,12 +92,12 @@ vp_total = df['vp'].sum()
 # Add a new column to the DataFrame for the 'vp' values as a percentage of the total
 #df['vp_percent'] = df['vp'].apply(lambda x: (x / vp_total) * 100)
 
-def check_null(x):
-  if pd.isnull(x).any():
-    return False
-  return True
+#def check_null(x):
+ # if pd.isnull(x).any():
+  #  return False
+  #return True
 
-df = df[df["choices"].apply(check_null)]
+#df = df[df["choices"].apply(check_null)]
 
 # Display the table
 st.table(df)
