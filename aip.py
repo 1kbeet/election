@@ -70,12 +70,17 @@ vp_sum = df['vp'].sum()
 # Display the sum as a large text box with a title
 st.markdown(f'<h1 style="font-size:50px">Total Voting Power: {vp_sum:,.2f}</h1>', unsafe_allow_html=True)
 
-# Convert the 'vp' column to a float and handle invalid values
+# Convert the 'vp' column values to floats
+df['vp'] = df['vp'].apply(lambda x: float(x))
+
+# Convert the 'vp' column values to floats and handle invalid values
 def convert_to_float(x):
   try:
     return float(x)
-  except:
+  except ValueError:
     return 0
+
+df['vp'] = df['vp'].apply(convert_to_float)
 
 # Add a new column to the DataFrame for the formatted 'vp' values
 df['vp'] = df['vp'].apply(lambda x: '{:,.2f}'.format(x))
