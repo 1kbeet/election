@@ -93,7 +93,7 @@ vp_total = df['vp'].sum()
 #df['vp_percent'] = df['vp'].apply(lambda x: (x / vp_total) * 100)
 #df['vp_percent'] = df['vp_percent'].apply(convert_to_float)
 
-df = df.loc[df["choices"] != "null"]
+df.dropna(subset=["choices"], inplace=True)
 
 # Display the table
 st.table(df)
