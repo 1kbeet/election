@@ -83,6 +83,12 @@ df['vp'] = df['vp'].apply(lambda x: '{:,.2f}'.format(x))
 # Add a new column to the DataFrame for the 'choice' values
 df['choice'] = df['choice'].apply(lambda x: 'In Favor' if x == 1 else 'Against')
 
+# Calculate the total sum of the 'vp' column
+vp_total = df['vp'].sum()
+
+# Add a new column to the DataFrame for the 'vp' values as a percentage of the total
+df['vp_percent'] = df['vp'].apply(lambda x: (x / vp_total) * 100)
+
 # Display the table
 st.table(df)
 
