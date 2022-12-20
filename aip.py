@@ -91,10 +91,13 @@ vp_total = df['vp'].sum()
 
 # Add a new column to the DataFrame for the 'vp' values as a percentage of the total
 #df['vp_percent'] = df['vp'].apply(lambda x: (x / vp_total) * 100)
-#df['vp_percent'] = df['vp_percent'].apply(convert_to_float)
 
-df = df.loc[df["choices"].notnull()]
+def check_null(x):
+  if pd.isnull(x).any():
+    return False
+  return True
 
+df = df[df["choices"].apply(check_null)]
 
 # Display the table
 st.table(df)
