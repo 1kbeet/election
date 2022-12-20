@@ -117,7 +117,7 @@ chart = alt.Chart(df_grouped).mark_circle().encode(
     alt.Color('choice', scale=alt.Scale(range=['#0A2A6E', '#FFCE44']))
 )
 
-chart = chart.properties(height=500)
+chart = chart.properties(height=500, width=600)
 
 # Display the chart
 st.altair_chart(chart)
