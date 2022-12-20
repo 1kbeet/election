@@ -113,20 +113,17 @@ df_total = df.groupby('created')['vp'].sum().reset_index()
 # Group the DataFrame by the 'created' column and filter for rows where 'choices' equals 1, then calculate the sum of the 'vp' column for each group
 df_choice_1 = df[df['choice'] == 1].groupby('created')['vp'].sum().reset_index()
 
-# Create the line chart
-chart = alt.Chart().mark_line().encode(
+# Create the line chart with multiple lines
+chart = alt.Chart(df_total).mark_line(color='#0A2A6E').encode(
     alt.X('created', axis=alt.Axis(title='Time')),
     alt.Y('vp', axis=alt.Axis(title='Voting Power'))
 )
 
-# Add the total 'vp' line to the chart
-chart = chart + alt.Chart(df_total).mark_line(color='#0A2A6E').encode(
-    alt.Y('vp', axis=alt.Axis(title='Voting Power'))
-)
-
 # Add the 'vp' line for 'choices' equal to 1 to the chart
-chart = chart + alt.Chart(df_choice_1).mark_line(color='#FFCE44').encode(
-    alt.Y('vp', axis=alt.Axis(title='Voting Power'))
+chart = chart.mark_line(color='#FFCE44').encode(
+    alt.X('created', axis=alt.Axis(title='Time')),
+    alt.Y('vp', axis=alt.Axis(title='Voting Power')),
+    data=df_choice_1
 )
 
 chart = chart.properties(height=500)
