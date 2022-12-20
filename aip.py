@@ -49,19 +49,6 @@ query Votes {
 }
 '''
 
-# Group the DataFrame by the 'choices' column and calculate the sum of the 'vp' column for each group
-df_grouped = df.groupby('choice')['vp'].sum().reset_index()
-
-# Create the pie chart
-chart = alt.Chart(df_grouped).mark_pie().encode(
-    x='vp',
-    y='choice',
-    color='choice'
-)
-
-# Display the chart
-st.altair_chart(chart)
-
 # Set the GraphQL variables (if any)
 variables = {}
 
@@ -77,6 +64,18 @@ data = response.json()['data']['votes']
 # Convert the data to a Pandas DataFrame
 df = pd.DataFrame(data)
 
+# Group the DataFrame by the 'choices' column and calculate the sum of the 'vp' column for each group
+df_grouped = df.groupby('choice')['vp'].sum().reset_index()
+
+# Create the pie chart
+chart = alt.Chart(df_grouped).mark_pie().encode(
+    x='vp',
+    y='choice',
+    color='choice'
+)
+
+# Display the chart
+st.altair_chart(chart)
 # Calculate the sum of the 'vp' column
 vp_sum = df['vp'].sum()
 
