@@ -100,11 +100,11 @@ vp_total = df['vp'].sum()
 
 def label_choice(choice):
     if choice == 1:
-        return "in favor"
+        return "In-Favor"
     elif choice == 2:
-        return "against"
+        return "Against"
 
-df['choices'] = df['choice'].apply(label_choice)
+df['choice'] = df['choice'].apply(label_choice)
 
 # Display the table
 st.table(df)
