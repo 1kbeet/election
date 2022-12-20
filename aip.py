@@ -117,8 +117,10 @@ chart = alt.Chart(df_grouped).mark_arc().encode(
     color='choice'
 )
 
+chart = chart.properties(height=500)
+
 # Display the chart
-st.altair_chart(chart, height=500)
+st.altair_chart(chart)
 
 # Display the table
 st.table(df)
