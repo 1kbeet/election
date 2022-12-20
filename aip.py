@@ -86,9 +86,6 @@ df['vp'] = df['vp'].apply(convert_to_float)
 # Add a new column to the DataFrame for the formatted 'vp' values
 df['vp'] = df['vp'].apply(lambda x: '{:,.2f}'.format(x))
 
-# Add a new column to the DataFrame for the 'choice' values
-df['choice'] = df['choice'].apply(lambda x: 'In Favor' if x == 1 else 'Against')
-
 # Calculate the total sum of the 'vp' column
 vp_total = df['vp'].sum()
 
