@@ -107,19 +107,26 @@ def label_choice(choice):
 
 df['choice'] = df['choice'].apply(label_choice)
 
+# Group the DataFrame by the 'created' column and filter for rows where 'choices' equals 1, then calculate the sum of the 'vp' column for each group
+df_choice_1 = df[df['choice'] == 1].groupby('created')['vp'].sum().reset_index()
 
-# Group the DataFrame by the 'choice' column and calculate the sum of the 'vp' column for each group
-df_grouped = df.groupby('choice')['vp'].sum().reset_index()
-
-# Create the bubble chart
-chart = alt.Chart(df_grouped).mark_circle().encode(
-    alt.Size('vp', scale=alt.Scale(range=[0, 1000])),
-    alt.Color('choice', scale=alt.Scale(range=['#0A2A6E', '#FFCE44'])),
-    alt.X('choice', axis=alt.Axis(title='Choice')),
+# Create the line chart
+chart = alt.Chart().mark_line().encode(
+    alt.X('created', axis=alt.Axis(title='Time')),
     alt.Y('vp', axis=alt.Axis(title='Voting Power'))
 )
 
-chart = chart.properties(height=500, width=600)
+# Add the total 'vp' line to the chart
+chart = chart + alt.Chart(df_total).mark_line(color='#0A2A6E').encode(
+    alt.Y('vp', axis=alt.Axis(title='Voting Power'))
+)
+
+# Add the 'vp' line for 'choices' equal to 1 to the chart
+chart = chart + alt.Chart(df_choice_1).mark_line(color='#FFCE44').encode(
+    alt.Y('vp', axis=alt.Axis(title='Voting Power'))
+)
+
+chart = chart.properties(height=500)
 
 # Display the chart
 st.altair_chart(chart)
