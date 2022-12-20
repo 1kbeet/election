@@ -118,7 +118,7 @@ chart = alt.Chart(df_grouped).mark_arc().encode(
 )
 
 # Display the chart
-st.altair_chart(chart)
+st.altair_chart(chart,height=500, width=600)
 
 # Display the table
 st.table(df)
