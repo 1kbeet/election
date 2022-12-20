@@ -114,9 +114,7 @@ df_grouped = df.groupby('choice')['vp'].sum().reset_index()
 chart = alt.Chart(df_grouped).mark_arc().encode(
     x='vp',
     y='choice',
-    color='choice',
-    startAngle=0,
-    endAngle=360
+    color='choice'
 )
 
 # Display the chart
