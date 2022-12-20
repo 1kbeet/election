@@ -93,6 +93,7 @@ vp_total = df['vp'].sum()
 
 # Add a new column to the DataFrame for the 'vp' values as a percentage of the total
 df['vp_percent'] = df['vp'].apply(lambda x: (x / vp_total) * 100)
+df['vp_percent'] = df['vp_percent'].apply(convert_to_float)
 
 # Display the table
 st.table(df)
