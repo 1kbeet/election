@@ -111,11 +111,11 @@ st.table(df)
 
 
 # Group the DataFrame by the 'choices' column and calculate the sum of the 'vp' column for each group
-df_grouped = df.groupby('choices')['vp'].sum().reset_index()
+df_grouped = df.groupby('choice')['vp'].sum().reset_index()
 
 # Create the bar chart
 chart = alt.Chart(df_grouped).mark_bar().encode(
-    x='choices',
+    x='choice',
     y='vp'
 )
 
