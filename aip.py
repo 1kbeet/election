@@ -13,7 +13,7 @@ st.set_page_config(
 )
 c1, c2 = st.columns([1, 3])
 
-c2.header("AIP-183 Voting")
+c2.header("ApeCoin DAO – Special Council Nominees - Term Beginning January 2023")
 c2.caption(
     """
     A deep dive on Royalty Data from Ethereum Network. Powered by [Flipside Crypto](https://flipsidecrypto.xyz/)
