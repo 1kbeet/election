@@ -22,10 +22,10 @@ c2.caption(
     Twitter: [@1kbeetlejuice](https://twitter.com/1kbeetlejuice) 
     """
 )
-c1.image(
-    image,
-    width=100,
-)
+#c1.image(
+#    image,
+#    width=100,
+#)
 
 
 # Set the GraphQL endpoint URL
