@@ -8,8 +8,7 @@ alt.data_transformers.disable_max_rows()
 #image = Image.open(r"C:\\Users\\bradl\\Pictures\\beetle.png")
 
 st.set_page_config(
-    page_title="Spire",
-    page_icon=image,
+    page_title="Beetle",
     layout="wide",
 )
 c1, c2 = st.columns([1, 3])
