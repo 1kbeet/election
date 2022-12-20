@@ -28,8 +28,7 @@ c2.caption(
 
 
 # Set the GraphQL endpoint URL
-url = 'https://hub.snapshot.org/graphql?operationName=Votes&query=query%20Votes%20%7B%0A%20%20votes%20(%0A%20%20%20%20first%3A%201000%0A%20%20%20%20skip%3A%200%0A%20%20%20%20where%3A%20%7B%0A%20%20%20%20%20%20proposal%3A%20%220x79ae5f9eb3c710179cfbf706fa451459ddd18d4b0bce37c22aae601128efe927%22%0A%20%20%20%20%7D%0A%20%20%20%20orderBy%3A%20%22created%22%2C%0A%20%20%20%20orderDirection%3A%20desc%0A%20%20)%20%7B%0A%20%20%20%20created%0A%20%20%20%20voter%0A%20%20%20%20choice%0A%20%20%20%20vp%0A%20%20%7D%0A%7D%0A'
-
+url = 'https://hub.snapshot.org/graphql?operationName=Votes&query=query%20Votes%20%7B%0A%20%20votes%20(%0A%20%20%20%20first%3A%201000%0A%20%20%20%20skip%3A%200%0A%20%20%20%20where%3A%20%7B%0A%20%20%20%20%20%20proposal%3A%20%220x2485aa565a28902bd33bbba1f91e9c7b66cf34010bd25c4bef82cd8e341071d8%22%0A%20%20%20%20%7D%0A%20%20%20%20orderBy%3A%20%22vp%22%2C%0A%20%20%20%20orderDirection%3A%20desc%0A%20%20)%20%7B%0A%20%20%20%20created%0A%20%20%20%20voter%0A%20%20%20%20choice%0A%20%20%20%20vp%0A%20%20%7D%0A%7D%0A'
 # Set the GraphQL query
 query = '''
 query Votes {
@@ -37,9 +36,9 @@ query Votes {
     first: 1000
     skip: 0
     where: {
-      proposal: "0x79ae5f9eb3c710179cfbf706fa451459ddd18d4b0bce37c22aae601128efe927"
+      proposal: "0x2485aa565a28902bd33bbba1f91e9c7b66cf34010bd25c4bef82cd8e341071d8"
     }
-    orderBy: "created",
+    orderBy: "vp",
     orderDirection: desc
   ) {
     created
