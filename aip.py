@@ -107,6 +107,9 @@ def label_choice(choice):
 
 df['choice'] = df['choice'].apply(label_choice)
 
+# Group the DataFrame by the 'created' column and calculate the sum of the 'vp' column for each group
+df_total = df.groupby('created')['vp'].sum().reset_index()
+
 # Group the DataFrame by the 'created' column and filter for rows where 'choices' equals 1, then calculate the sum of the 'vp' column for each group
 df_choice_1 = df[df['choice'] == 1].groupby('created')['vp'].sum().reset_index()
 
