@@ -65,21 +65,6 @@ data = response.json()['data']['votes']
 df = pd.DataFrame(data)
 
 
-# Group the DataFrame by the 'choices' column and calculate the sum of the 'vp' column for each group
-df_grouped = df.groupby('choices')['vp'].sum().reset_index()
-
-# Create the pie chart
-chart = alt.Chart(df_grouped).mark_arc().encode(
-    x='vp',
-    y='choice',
-    color='choice',
-    startAngle=0,
-    endAngle=360
-)
-
-# Display the chart
-st.altair_chart(chart)
-
 # Calculate the sum of the 'vp' column
 vp_sum = df['vp'].sum()
 
@@ -121,6 +106,21 @@ def label_choice(choice):
         return "Against"
 
 df['choice'] = df['choice'].apply(label_choice)
+
+# Group the DataFrame by the 'choices' column and calculate the sum of the 'vp' column for each group
+df_grouped = df.groupby('choice')['vp'].sum().reset_index()
+
+# Create the pie chart
+chart = alt.Chart(df_grouped).mark_arc().encode(
+    x='vp',
+    y='choice',
+    color='choice',
+    startAngle=0,
+    endAngle=360
+)
+
+# Display the chart
+st.altair_chart(chart)
 
 # Display the table
 st.table(df)
